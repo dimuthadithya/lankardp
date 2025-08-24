@@ -373,18 +373,20 @@
           class="mt-12 pt-8 border-t border-white border-opacity-20 animate-fade-in"
         >
           <p class="text-blue-100 text-sm mb-4">Trusted by 1000+ customers</p>
-          <div class="flex justify-center items-center space-x-8 text-white">
-            <div class="flex items-center space-x-2">
+          <div
+            class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8 text-white"
+          >
+            <div class="flex items-center space-x-2 whitespace-nowrap">
               <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
               <span class="text-sm">4.9/5 Rating</span>
             </div>
-            <div class="hidden md:block w-px h-6 bg-white opacity-30"></div>
-            <div class="flex items-center space-x-2">
+            <div class="hidden sm:block w-px h-6 bg-white opacity-30"></div>
+            <div class="flex items-center space-x-2 whitespace-nowrap">
               <span class="text-green-400">✓</span>
               <span class="text-sm">99.9% Uptime</span>
             </div>
-            <div class="hidden md:block w-px h-6 bg-white opacity-30"></div>
-            <div class="flex items-center space-x-2">
+            <div class="hidden sm:block w-px h-6 bg-white opacity-30"></div>
+            <div class="flex items-center space-x-2 whitespace-nowrap">
               <span class="text-blue-400">🚀</span>
               <span class="text-sm">High Performance</span>
             </div>
@@ -819,7 +821,7 @@
         durationType,
         availableDurations
       ) {
-        const phoneNumber = '0740069520'; // WhatsApp number
+        const phoneNumber = '+94740069520'; // WhatsApp number
         const message = `Hello! I'm interested in RDP services for ${countryName}.
 
 📍 Location: ${countryName} (${regionName})
