@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LankaRDP - Fast & Secure RDP in Sri Lanka</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@0.7.2/dist/ui.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"
+      defer
+    ></script>
+    <script>
+      // Debug function
+      function debug(msg) {
+        console.log(`[Theme Debug] ${msg}`);
+      }
+
+      // Theme Management
+      const themeManager = {
+        init() {
+          debug('Initializing theme manager');
+          // Set initial theme
+          const theme =
+            localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light');
+          debug(`Initial theme: ${theme}`);
+          this.setTheme(theme);
+
+          // Add event listener for theme toggle button
+          document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('theme-toggle');
+            if (toggleBtn) {
+              toggleBtn.addEventListener('click', () => this.toggleTheme());
+            }
+            this.updateIcons(); // Set initial icon state
+          });
+        },
+
+        setTheme(theme) {
+          debug(`Setting theme to: ${theme}`);
+          document.documentElement.setAttribute('data-theme', theme);
+          localStorage.setItem('theme', theme);
+          debug('Theme set successfully');
+        },
+
+        toggleTheme() {
+          const currentTheme =
+            document.documentElement.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+          // Add transition class
+          document.documentElement.classList.add('theme-transition');
+
+          // Set new theme
+          this.setTheme(newTheme);
+
+          // Update icons
+          this.updateIcons();
+
+          // Remove transition class
+          setTimeout(() => {
+            document.documentElement.classList.remove('theme-transition');
+          }, 300);
+        },
+
+        updateIcons() {
+          const currentTheme =
+            document.documentElement.getAttribute('data-theme');
+          const sunIcon = document.querySelector('.sun');
+          const moonIcon = document.querySelector('.moon');
+
+          if (sunIcon && moonIcon) {
+            if (currentTheme === 'dark') {
+              sunIcon.classList.add('hidden');
+              moonIcon.classList.remove('hidden');
+            } else {
+              sunIcon.classList.remove('hidden');
+              moonIcon.classList.add('hidden');
+            }
+          }
+        }
+      };
+
+      // Initialize theme manager on DOM Content Loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        debug('DOM Content Loaded - Initializing theme system');
+        themeManager.init();
+      });
+    </script>
+    <style>
+      /* Base theme colors */
+      :root {
+        --bg-primary: #ffffff;
+        --text-primary: #111827;
+        --text-secondary: #4B5563;
+      }
+
+      [data-theme="dark"] {
+        --bg-primary: #111827;
+        --text-primary: #F9FAFB;
+        --text-secondary: #D1D5DB;
+      }
+
+      /* Theme transition */
+      .theme-transition,
+      .theme-transition *,
+      .theme-transition *:before,
+      .theme-transition *:after {
+        transition: all 0.3s ease-in-out !important;
+      }
+
+      /* Dark mode styles */
+      [data-theme="dark"] {
+        color-scheme: dark;
+      }
+      [data-theme="dark"] body {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+      }
+      [data-theme="dark"] .bg-gradient-to-br {
+        background: linear-gradient(to bottom right, #1F2937, #111827);
+      }
+      [data-theme="dark"] body {
+        background: #111827;
+        color: #F9FAFB;
+      }
+      [data-theme="dark"] .bg-white {
+        background-color: #1F2937;
+      }
+      [data-theme="dark"] .text-gray-600 {
+        color: #D1D5DB;
+      }
+      [data-theme="dark"] .text-gray-700 {
+        color: #E5E7EB;
+      }
+      [data-theme="dark"] .text-gray-800 {
+        color: #F3F4F6;
+      }
+      [data-theme="dark"] .text-gray-900 {
+        color: #F9FAFB;
+      }
+      [data-theme="dark"] .border-gray-100 {
+        border-color: #374151;
+      }
+      [data-theme="dark"] .border-gray-200 {
+        border-color: #374151;
+      }
+      [data-theme="dark"] .bg-gray-50 {
+        background-color: #1F2937;
+      }
+      [data-theme="dark"] .bg-gray-100 {
+        background-color: #1F2937;
+      }
+      [data-theme="dark"] .shadow-xl {
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      }
+
+      :root {
+        --primary: #4F46E5;
+        --primary-dark: #4338CA;
+        --card-bg: #                  <div class="flex items-center space-x-3 px-4">
+                    <div class="flex-shrink-0 w-6 h-6 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center">
+                      <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <span class="text-gray-700 dark:text-gray-300 text-lg">${feature}</span>
+                  </div>
+        --card-border: #E5E7EB;
+        --text-primary: #111827;
+        --text-secondary: #4B5563;
+        --accent: #FCD34D;
+      }
+
+      [data-theme="dark"] {
+        --primary: #6366F1;
+        --primary-dark: #4F46E5;
+        --card-bg: #1F2937;
+        --card-border: #374151;
+        --text-primary: #F9FAFB;
+        --text-secondary: #D1D5DB;
+        --accent: #FBBF24;
+      }
+
+      @keyframes pulse-whatsapp {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+      .whatsapp-btn {
+        animation: pulse-whatsapp 2s infinite;
+      }
+      .whatsapp-btn:hover {
+        animation: none;
+        transform: scale(1.1);
+      }
+      @keyframes slide-in-bottom {
+        0% {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .slide-in-bottom {
+        animation: slide-in-bottom 0.5s ease-out;
+      }
+      .floating-whatsapp-label {
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s ease;
+      }
+      .whatsapp-container:hover .floating-whatsapp-label {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-blue-100 to-indigo-200 dark:from-gray-900 dark:to-gray-800 min-h-screen font-sans transition-colors duration-300"
+  >
+    <!-- Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+      <button
+        id="theme-toggle"
+        class="p-3 rounded-full bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110"
+        onclick="themeManager.toggleTheme()"
+        aria-label="Toggle dark mode"
+      >
+        <svg
+          class="w-6 h-6 sun"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+          />
+        </svg>
+        <svg
+          class="w-6 h-6 moon hidden"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Enhanced Hero Section -->
+    <header class="relative overflow-hidden">
+      <!-- Background Pattern -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-blue-600 to-purple-700"
+      ></div>
+      <div class="absolute inset-0 bg-black opacity-20"></div>
+
+      <!-- Decorative Elements -->
+      <div class="absolute top-0 left-0 w-full h-full">
+        <div
+          class="absolute top-10 left-10 w-20 h-20 bg-white opacity-10 rounded-full"
+        ></div>
+        <div
+          class="absolute top-32 right-16 w-16 h-16 bg-yellow-400 opacity-20 rounded-full"
+        ></div>
+        <div
+          class="absolute bottom-20 left-20 w-12 h-12 bg-white opacity-15 rounded-full"
+        ></div>
+        <div
+          class="absolute bottom-32 right-32 w-24 h-24 bg-blue-300 opacity-10 rounded-full"
+        ></div>
+      </div>
+
+      <div
+        class="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-24 text-center"
+      >
+        <!-- Main Heading -->
+        <div class="animate-fade-in-down">
+          <h1
+            id="company-name"
+            class="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tight"
+          >
+            Lanka<span class="text-yellow-400">RDP</span>
+          </h1>
+          <p
+            id="company-tagline"
+            class="text-xl md:text-2xl text-blue-100 font-medium mb-8 max-w-3xl mx-auto leading-relaxed"
+          >
+            Fast, Secure & Affordable RDP Services in Sri Lanka
+          </p>
+        </div>
+
+        <!-- Key Features -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 animate-fade-in-up"
+        >
+          <div
+            class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 border border-white border-opacity-20"
+          >
+            <div class="text-4xl mb-3">⚡</div>
+            <h3 class="text-white font-semibold text-lg mb-2">Instant Setup</h3>
+            <p class="text-blue-100 text-sm">Ready in 5-10 minutes</p>
+          </div>
+          <div
+            class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 border border-white border-opacity-20"
+          >
+            <div class="text-4xl mb-3">🛡️</div>
+            <h3 class="text-white font-semibold text-lg mb-2">24/7 Support</h3>
+            <p class="text-blue-100 text-sm">Always here to help</p>
+          </div>
+          <div
+            class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 border border-white border-opacity-20"
+          >
+            <div class="text-4xl mb-3">🌍</div>
+            <h3 class="text-white font-semibold text-lg mb-2">
+              Global Servers
+            </h3>
+            <p class="text-blue-100 text-sm">36+ locations worldwide</p>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="animate-fade-in">
+          <span
+            id="promotion-banner"
+            class="inline-block px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full font-bold text-lg shadow-2xl hover:shadow-3xl transform hover:scale-105 transition duration-300 animate-pulse"
+          >
+            🎉 Limited Time Offer - Save 20%!
+          </span>
+
+          <div class="mt-8">
+            <a
+              href="#rdp-plans"
+              class="inline-flex items-center px-8 py-4 bg-white text-indigo-600 font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300"
+            >
+              View Plans & Pricing
+              <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div
+          class="mt-12 pt-8 border-t border-white border-opacity-20 animate-fade-in"
+        >
+          <p class="text-blue-100 text-sm mb-4">Trusted by 1000+ customers</p>
+          <div class="flex justify-center items-center space-x-8 text-white">
+            <div class="flex items-center space-x-2">
+              <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+              <span class="text-sm">4.9/5 Rating</span>
+            </div>
+            <div class="hidden md:block w-px h-6 bg-white opacity-30"></div>
+            <div class="flex items-center space-x-2">
+              <span class="text-green-400">✓</span>
+              <span class="text-sm">99.9% Uptime</span>
+            </div>
+            <div class="hidden md:block w-px h-6 bg-white opacity-30"></div>
+            <div class="flex items-center space-x-2">
+              <span class="text-blue-400">🚀</span>
+              <span class="text-sm">High Performance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- RDP Types & Prices -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-indigo-600 mb-4 animate-fade-in">
+          Choose Your RDP Plan
+        </h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+          Select the perfect duration for your needs. All plans include
+          high-speed connection, 24/7 support, and instant activation.
+        </p>
+      </div>
+      <div
+        id="rdp-plans"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+      >
+        <!-- Plans will be loaded dynamically -->
+      </div>
+    </section>
+
+    <!-- Country List -->
+    <section class="max-w-7xl mx-auto px-4 py-12 bg-gray-50">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-indigo-600 mb-4 animate-fade-in">
+          Available Server Locations
+        </h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          Choose from our global network of high-performance servers across
+          multiple continents for optimal speed and reliability. Countries are
+          categorized by available RDP durations.
+        </p>
+        <div
+          class="flex items-center justify-center text-green-600 text-sm font-medium mt-3"
+        >
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.787"
+            />
+          </svg>
+          💬 Click on any location/country to contact us via WhatsApp
+        </div>
+      </div>
+      <div id="countries-list" class="space-y-10">
+        <!-- Countries will be loaded dynamically by duration availability -->
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="max-w-6xl mx-auto px-4 py-12">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-indigo-600 mb-4 animate-fade-in">
+          What Our Customers Say
+        </h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+          Don't just take our word for it. See what our satisfied customers have
+          to say about our RDP services.
+        </p>
+      </div>
+      <div id="testimonials-list" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Testimonials will be loaded dynamically -->
+      </div>
+    </section>
+
+    <!-- Payment Details Section -->
+    <section
+      class="max-w-6xl mx-auto px-4 py-12 bg-gradient-to-br from-indigo-50 to-blue-50"
+    >
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-indigo-600 mb-4 animate-fade-in">
+          Payment Methods
+        </h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+          Choose your preferred payment method and get instant access to your
+          RDP within 5-10 minutes.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-8 animate-fade-in-up">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Payment Options -->
+          <div>
+            <h3
+              class="text-lg font-semibold text-gray-800 mb-4 flex items-center"
+            >
+              <span class="w-3 h-3 bg-green-500 rounded-full mr-3"></span>
+              Accepted Payment Methods
+            </h3>
+            <div class="space-y-4">
+              <div
+                class="payment-option flex items-center p-3 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition-all border border-transparent hover:border-blue-200"
+                onclick="showPaymentInfo('bank')"
+              >
+                <span class="text-2xl mr-3">🏦</span>
+                <div>
+                  <div class="font-medium">Bank Transfer</div>
+                  <div class="text-sm text-gray-600">
+                    Local Sri Lankan banks
+                  </div>
+                </div>
+                <span class="ml-auto text-blue-500">→</span>
+              </div>
+              <div
+                class="payment-option flex items-center p-3 bg-gray-50 hover:bg-blue-50 rounded-lg cursor-pointer transition-all border border-transparent hover:border-blue-200"
+                onclick="showPaymentInfo('binance')"
+              >
+                <span class="text-2xl mr-3">🔶</span>
+                <div>
+                  <div class="font-medium">Binance Pay</div>
+                  <div class="text-sm text-gray-600">
+                    Scan QR code for instant payment
+                  </div>
+                </div>
+                <span class="ml-auto text-blue-500">→</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Information Display -->
+          <div>
+            <h3
+              class="text-lg font-semibold text-gray-800 mb-4 flex items-center"
+            >
+              <span class="w-3 h-3 bg-blue-500 rounded-full mr-3"></span>
+              Payment Information
+            </h3>
+
+            <!-- Default View -->
+            <div
+              id="default-payment-info"
+              class="text-center py-8 text-gray-500"
+            >
+              <span class="text-4xl mb-4 block">💳</span>
+              <p>Click on a payment method to see details</p>
+            </div>
+
+            <!-- Bank Transfer Info -->
+            <div id="bank-payment-info" class="hidden space-y-4">
+              <div
+                class="p-4 bg-blue-50 dark:bg-white rounded-lg border-l-4 border-blue-400 dark:border-blue-500 shadow-lg"
+              >
+                <div class="font-medium text-blue-800 mb-3 text-lg">
+                  🏦 Bank Transfer Details
+                </div>
+                <div class="space-y-3 text-base dark:text-black">
+                  <div class="flex items-center gap-2">
+                    <strong class="text-black min-w-[120px] font-semibold"
+                      >Bank:</strong
+                    >
+                    <span class="text-black">Commercial Bank</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <strong class="text-black min-w-[120px] font-semibold"
+                      >Account Name:</strong
+                    >
+                    <span class="text-black">M.A.D.A Hemachandra</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <strong class="text-black min-w-[120px] font-semibold"
+                      >Account Number:</strong
+                    >
+                    <span class="text-black">8002473228</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <strong class="text-black min-w-[120px] font-semibold"
+                      >Branch:</strong
+                    >
+                    <span class="text-black">Kegalle</span>
+                  </div>
+                </div>
+                <div
+                  class="mt-3 p-3 bg-yellow-50 dark:bg-gray-900 rounded border border-yellow-200 dark:border-yellow-600"
+                >
+                  <div class="text-xs text-yellow-800 dark:text-yellow-200">
+                    <strong class="dark:text-yellow-100">Important:</strong>
+                    Send payment confirmation screenshot to WhatsApp +94
+                    740069520
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Binance Pay Info -->
+            <div id="binance-payment-info" class="hidden space-y-4">
+              <div
+                class="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400"
+              >
+                <div class="font-medium text-yellow-800 mb-3">
+                  🔶 Binance Pay QR Code
+                </div>
+                <div class="text-center space-y-4">
+                  <!-- QR Code -->
+                  <div
+                    class="bg-white p-4 rounded-lg border-2 border-yellow-300 mx-auto max-w-xs"
+                  >
+                    <img
+                      src="qr/binance.jpg"
+                      alt="Binance Pay QR Code"
+                      class="w-48 h-48 object-contain mx-auto rounded-lg qr-zoom"
+                    />
+                  </div>
+                  <!-- Binance Pay ID -->
+                  <div class="bg-white p-3 rounded border">
+                    <div class="text-sm"><strong>Binance Pay ID:</strong></div>
+                    <div
+                      class="font-mono text-sm break-all text-center bg-gray-50 p-2 rounded mt-1"
+                    >
+                      199749347
+                    </div>
+                  </div>
+
+                  <!-- Payment Type Notice -->
+                  <div class="mt-2 p-2 bg-red-50 border border-red-200 rounded">
+                    <div class="text-xs text-red-700 font-semibold">
+                      ⚠️ USDT Payments Only
+                    </div>
+                  </div>
+
+                  <!-- Instructions -->
+                  <div class="text-sm text-yellow-700 space-y-2">
+                    <div><strong>How to pay:</strong></div>
+                    <ol class="list-decimal list-inside space-y-1 text-xs">
+                      <li>Open Binance app</li>
+                      <li>Go to "Pay" section</li>
+                      <li>Scan QR code or search "lankardp@binance"</li>
+                      <li>Select USDT as payment currency</li>
+                      <li>Enter the USD amount shown above</li>
+                      <li>Send screenshot to WhatsApp</li>
+                    </ol>
+                  </div>
+                </div>
+                <div
+                  class="mt-3 p-3 bg-orange-50 rounded border border-orange-200"
+                >
+                  <div class="text-xs text-orange-800">
+                    <strong>Important:</strong> Send payment confirmation
+                    screenshot to WhatsApp +94 740069520
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200"
+            >
+              <div class="text-sm text-yellow-800">
+                <strong>⚡ Fast Setup:</strong> RDP access provided within 5-10
+                minutes after payment confirmation!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer
+      class="bg-gradient-to-r from-indigo-800 to-blue-900 text-white mt-16"
+    >
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Company Info -->
+          <div>
+            <h3 class="text-xl font-bold mb-4">LankaRDP</h3>
+            <p class="text-blue-200 mb-4">
+              Fast, Secure & Affordable RDP services in Sri Lanka with global
+              server coverage.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-300 hover:text-white transition"
+                >📧</a
+              >
+              <a href="#" class="text-blue-300 hover:text-white transition"
+                >📱</a
+              >
+              <a href="#" class="text-blue-300 hover:text-white transition"
+                >🌐</a
+              >
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white transition"
+                  >RDP Plans</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white transition"
+                  >Server Locations</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white transition"
+                  >Payment Methods</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white transition"
+                  >Customer Support</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Support -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Support</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white transition"
+                  >Help Center</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white transition"
+                  >Setup Guide</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white transition"
+                  >Troubleshooting</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white transition"
+                  >Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <span class="mr-2">📧</span>
+                <span class="text-blue-200">support@lankardp.com</span>
+              </div>
+              <div class="flex items-center">
+                <span class="mr-2">📱</span>
+                <span class="text-blue-200">+94 740069520</span>
+              </div>
+              <div class="flex items-center">
+                <span class="mr-2">⏰</span>
+                <span class="text-blue-200">24/7 Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div
+          class="border-t border-blue-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <div class="text-blue-200 text-sm">
+            &copy; 2025 LankaRDP. All rights reserved.
+          </div>
+          <div class="text-blue-200 text-sm mt-4 md:mt-0">
+            <span class="mr-4">Privacy Policy</span>
+            <span class="mr-4">Terms of Service</span>
+            <span>Refund Policy</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div
+      class="fixed bottom-8 right-8 z-50 flex items-center whatsapp-container slide-in-bottom"
+      id="floating-whatsapp"
+    >
+      <div
+        class="mr-4 py-2 px-4 bg-green-600 text-white rounded-lg shadow-lg floating-whatsapp-label"
+      >
+        Chat with us on WhatsApp
+      </div>
+      <button
+        onclick="sendFloatingWhatsAppMessage()"
+        class="whatsapp-btn bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-transform duration-300 flex items-center justify-center"
+      >
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.787"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- JavaScript to load data -->
+    <script>
+      // Fetch data from JSON file
+      async function loadData() {
+        try {
+          const response = await fetch('./data.json');
+          const data = await response.json();
+
+          // Update company info
+          document.getElementById('company-name').textContent =
+            data.company.name;
+          document.getElementById('company-tagline').textContent =
+            data.company.tagline;
+          document.getElementById('promotion-banner').textContent =
+            data.promotions.current.title;
+
+          // Load RDP plans
+          loadRDPPlans(data.rdpPlans);
+
+          // Load countries
+          loadCountries(data.countries);
+
+          // Load testimonials
+          loadTestimonials(data.testimonials);
+        } catch (error) {
+          console.error('Error loading data:', error);
+        }
+      }
+
+      // WhatsApp messaging function for individual locations
+      function sendWhatsAppMessage(
+        countryName,
+        regionName,
+        durationType,
+        availableDurations
+      ) {
+        const phoneNumber = '0740069520'; // WhatsApp number
+        const message = `Hello! I'm interested in RDP services for ${countryName}.
+
+📍 Location: ${countryName} (${regionName})
+⏱️ Duration Category: ${durationType}
+📅 Available Durations: ${availableDurations}
+
+Please provide more information about pricing and availability for this specific location.
+
+Thank you!`;
+
+        // Format WhatsApp URL
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+          message
+        )}`;
+
+        // Open WhatsApp in new tab
+        window.open(whatsappURL, '_blank');
+      }
+
+      // Load RDP plans
+      function loadRDPPlans(plans) {
+        const plansContainer = document.getElementById('rdp-plans');
+        plansContainer.innerHTML = '';
+
+        plans.forEach((plan, index) => {
+          const planDiv = document.createElement('div');
+          planDiv.className = `relative rounded-2xl p-4 text-center transform transition-all duration-300 animate-fade-in-up delay-${
+            index * 100
+          } dark:bg-gray-800 bg-white hover:scale-105 group shadow-xl dark:shadow-gray-900/10 hover:shadow-2xl dark:hover:shadow-indigo-500/10`;
+
+          planDiv.innerHTML = `
+            <div class="space-y-4">
+              <div class="space-y-2">
+                <h3 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">${
+                  plan.duration
+                }</h3>
+                <div>
+                  <div class="text-4xl font-bold text-gray-900 dark:text-white">
+                    $${plan.priceUSD}
+                  </div>
+                  <div class="text-lg text-gray-500 dark:text-gray-400">
+                    (${plan.currency} ${plan.price})
+                  </div>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">One-time payment</p>
+              </div>
+
+              <div class="space-y-3 pt-6">
+            <div class="mb-8 text-center">
+              <h3 class="text-3xl font-bold text-indigo-600 mb-4">${
+                plan.duration
+              }</h3>
+              <div class="text-5xl font-bold text-indigo-600 mb-2">
+                $${plan.priceUSD}
+              </div>
+              <div class="text-xl text-gray-500 mb-3">
+                (${plan.currency} ${plan.price})
+              </div>
+              <p class="text-gray-500 text-lg">One-time payment</p>
+            </div>
+            
+            <div class="space-y-3 mb-8">
+              ${plan.features
+                .map(
+                  (feature) => `
+                  <div class="flex items-center justify-start px-4 space-x-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                      <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <span class="text-gray-700 text-sm font-medium">${feature}</span>
+                  </div>
+                `
+                )
+                .join('')}
+            </div>
+            
+            <div class="pt-6 border-t border-gray-100">
+              <div class="text-xs text-gray-500 mb-2">Setup Time</div>
+              <div class="text-sm font-semibold text-green-600">5-10 minutes</div>
+            </div>
+          `;
+
+          plansContainer.appendChild(planDiv);
+        });
+      }
+
+      // Load countries
+      function loadCountries(countries) {
+        const countriesContainer = document.getElementById('countries-list');
+        countriesContainer.innerHTML = '';
+
+        // Group countries by duration availability
+        const durationGroups = {
+          '6h+': [], // Countries that support 6h and above
+          '12h+': [] // Countries that support 12h and above (but not 6h)
+        };
+
+        countries.forEach((country) => {
+          if (country.available && country.availableDurations) {
+            if (country.availableDurations.includes('6h')) {
+              durationGroups['6h+'].push(country);
+            } else if (country.availableDurations.includes('12h')) {
+              durationGroups['12h+'].push(country);
+            }
+          }
+        });
+
+        // Create sections for each duration group
+        Object.keys(durationGroups).forEach((durationKey, groupIndex) => {
+          if (durationGroups[durationKey].length === 0) return; // Skip empty groups
+
+          const groupDiv = document.createElement('div');
+          groupDiv.className = `animate-fade-in-up delay-${groupIndex * 100}`;
+
+          const groupTitle = document.createElement('h3');
+          groupTitle.className =
+            'text-2xl font-bold text-indigo-700 mb-6 flex items-center';
+
+          const durationInfo =
+            durationKey === '6h+'
+              ? {
+                  label: '6H+ Available Locations',
+                  desc: 'Supports all durations: 6h, 12h, 24h, 48h',
+                  icon: '⚡',
+                  color: 'green'
+                }
+              : {
+                  label: '12H+ Available Locations',
+                  desc: 'Supports durations: 12h, 24h, 48h',
+                  icon: '🕐',
+                  color: 'blue'
+                };
+
+          groupTitle.innerHTML = `
+            <span class="text-2xl mr-3">${durationInfo.icon}</span>
+            <div>
+              <div>${durationInfo.label}</div>
+              <div class="text-sm font-normal text-gray-500">${durationInfo.desc} • ${durationGroups[durationKey].length} locations</div>
+            </div>
+          `;
+
+          // Group countries in this duration group by region
+          const regions = {};
+          durationGroups[durationKey].forEach((country) => {
+            if (!regions[country.region]) {
+              regions[country.region] = [];
+            }
+            regions[country.region].push(country);
+          });
+
+          const regionsContainer = document.createElement('div');
+          regionsContainer.className = 'space-y-6';
+
+          // Create subsections for each region within the duration group
+          Object.keys(regions).forEach((regionName, regionIndex) => {
+            const regionDiv = document.createElement('div');
+            regionDiv.className = 'bg-white rounded-lg p-6 shadow-sm';
+
+            const regionTitle = document.createElement('h4');
+            regionTitle.className =
+              'text-lg font-semibold text-gray-700 mb-4 flex items-center';
+            regionTitle.innerHTML = `
+              <span class="w-3 h-3 bg-${durationInfo.color}-500 rounded-full mr-3"></span>
+              ${regionName}
+              <span class="ml-2 text-sm font-normal text-gray-500">(${regions[regionName].length} locations)</span>
+            `;
+            const countriesGrid = document.createElement('div');
+            countriesGrid.className =
+              'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3';
+
+            regions[regionName].forEach((country) => {
+              const countryDiv = document.createElement('div');
+              countryDiv.className = `px-4 py-3 bg-gray-50 rounded-lg hover:bg-indigo-50 hover:scale-105 transform transition cursor-pointer border-l-4 border-${country.color}-400 hover:border-indigo-400`;
+
+              const ecoIcon = country.eco
+                ? '<span class="text-green-500 text-xs ml-1">🌱</span>'
+                : '';
+
+              // Show available durations for this country
+              const availableDurations = country.availableDurations.join(', ');
+
+              countryDiv.innerHTML = `
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center">
+                    <span class="text-lg mr-2">${country.flag}</span>
+                    <div>
+                      <div class="font-semibold text-gray-800">${country.name}</div>
+                      <div class="text-xs text-gray-500">${country.location}</div>
+                    </div>
+                  </div>
+                  <div class="text-right flex items-center">
+                    <div class="mr-2">
+                      ${ecoIcon}
+                    </div>
+                    <div class="text-green-600 hover:text-green-700">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.787"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-xs text-indigo-600 font-medium">
+                  📅 Available: ${availableDurations}
+                </div>
+              `;
+
+              // Add click handler for WhatsApp - for individual countries
+              countryDiv.addEventListener('click', () => {
+                sendWhatsAppMessage(
+                  country.name,
+                  country.region,
+                  durationKey,
+                  availableDurations
+                );
+              });
+
+              countriesGrid.appendChild(countryDiv);
+            });
+
+            regionDiv.appendChild(regionTitle);
+            regionDiv.appendChild(countriesGrid);
+            regionsContainer.appendChild(regionDiv);
+          });
+
+          groupDiv.appendChild(groupTitle);
+          groupDiv.appendChild(regionsContainer);
+          countriesContainer.appendChild(groupDiv);
+        });
+      }
+
+      // Load testimonials
+      function loadTestimonials(testimonials) {
+        const testimonialsContainer =
+          document.getElementById('testimonials-list');
+        testimonialsContainer.innerHTML = '';
+
+        testimonials.forEach((testimonial, index) => {
+          const testimonialDiv = document.createElement('div');
+          testimonialDiv.className = `bg-white rounded-xl shadow-lg p-6 animate-fade-in-up delay-${
+            index * 100
+          }`;
+
+          testimonialDiv.innerHTML = `
+            <div class="flex items-center mb-3">
+              ${Array(testimonial.rating).fill('⭐').join('')}
+            </div>
+            <p class="text-gray-700 italic">"${testimonial.message}"</p>
+            <div class="mt-4 flex items-center">
+              <img src="${
+                testimonial.avatar
+              }" alt="User" class="w-10 h-10 rounded-full mr-3">
+              <div>
+                <span class="font-semibold text-indigo-700">${
+                  testimonial.name
+                }, ${testimonial.location}</span>
+                <div class="text-sm text-gray-500">Used: ${
+                  testimonial.plan
+                }</div>
+              </div>
+            </div>
+          `;
+
+          testimonialsContainer.appendChild(testimonialDiv);
+        });
+      }
+
+      // Load data when page loads
+      document.addEventListener('DOMContentLoaded', loadData);
+
+      // Payment method selection function
+      function showPaymentInfo(method) {
+        // Hide all payment info sections
+        document.getElementById('default-payment-info').classList.add('hidden');
+        document.getElementById('bank-payment-info').classList.add('hidden');
+        document.getElementById('binance-payment-info').classList.add('hidden');
+
+        // Remove active class from all payment options
+        document.querySelectorAll('.payment-option').forEach((option) => {
+          option.classList.remove('bg-blue-100', 'border-blue-300');
+        });
+
+        // Show selected payment info and highlight option
+        if (method === 'bank') {
+          document
+            .getElementById('bank-payment-info')
+            .classList.remove('hidden');
+          event.target
+            .closest('.payment-option')
+            .classList.add('bg-blue-100', 'border-blue-300');
+        } else if (method === 'binance') {
+          document
+            .getElementById('binance-payment-info')
+            .classList.remove('hidden');
+          event.target
+            .closest('.payment-option')
+            .classList.add('bg-blue-100', 'border-blue-300');
+        }
+      }
+
+      function sendFloatingWhatsAppMessage() {
+        const message =
+          "Hi! I'm interested in learning more about RDP services.";
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/94740069520?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank');
+      }
+      // Dark mode toggle
+      function toggleTheme() {
+        const root = document.documentElement;
+        const isDark = root.getAttribute('data-theme') === 'dark';
+
+        // Apply transition class for smooth theme change
+        root.classList.add('theme-transition');
+        root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+
+        // Update toggle button icon
+        const sunIcon = document.querySelector('.sun');
+        const moonIcon = document.querySelector('.moon');
+        if (isDark) {
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+        } else {
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+        }
+
+        // Remove transition class
+        setTimeout(() => {
+          root.classList.remove('theme-transition');
+        }, 300);
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        // Update icon
+        const sunPath = document.querySelector('.sun');
+        const moonPath = document.querySelector('.moon');
+
+        if (newTheme === 'dark') {
+          sunPath.classList.add('hidden');
+          moonPath.classList.remove('hidden');
+        } else {
+          sunPath.classList.remove('hidden');
+          moonPath.classList.add('hidden');
+        }
+      }
+
+      // Set initial theme
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme =
+          localStorage.getItem('theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light');
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        const sunPath = document.querySelector('.sun');
+        const moonPath = document.querySelector('.moon');
+        if (savedTheme === 'dark') {
+          sunPath.classList.add('hidden');
+          moonPath.classList.remove('hidden');
+        }
+      });
+    </script>
+
+    <!-- Simple Animations -->
+    <style>
+      .animate-fade-in {
+        animation: fadeIn 1s ease-in;
+      }
+      .animate-fade-in-down {
+        animation: fadeInDown 1s ease-in;
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 1s ease-in;
+      }
+      .animate-bounce {
+        animation: bounce 1s infinite;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    </style>
+  </body>
+</html>

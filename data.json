@@ -1,0 +1,775 @@
+{
+    "rdpPlans": [
+        {
+            "id": 1,
+            "duration": "6 Hours",
+            "hours": 6,
+            "price": 340,
+            "currency": "Rs.",
+            "priceUSD": 1.1,
+            "popular": false,
+            "features": [
+                "High-speed connection",
+                "24/7 support",
+                "Instant activation",
+                "Windows 10/11"
+            ]
+        },
+        {
+            "id": 2,
+            "duration": "12 Hours",
+            "hours": 12,
+            "price": 470,
+            "currency": "Rs.",
+            "priceUSD": 1.5,
+            "popular": true,
+            "features": [
+                "High-speed connection",
+                "24/7 support",
+                "Instant activation",
+                "Windows 10/11",
+                "Priority support"
+            ]
+        },
+        {
+            "id": 3,
+            "duration": "24 Hours",
+            "hours": 24,
+            "price": 704,
+            "currency": "Rs.",
+            "priceUSD": 2.2,
+            "popular": false,
+            "features": [
+                "High-speed connection",
+                "24/7 support",
+                "Instant activation",
+                "Windows 10/11",
+                "Priority support",
+                "Extended usage"
+            ]
+        },
+        {
+            "id": 4,
+            "duration": "48 Hours",
+            "hours": 48,
+            "price": 1300,
+            "currency": "Rs.",
+            "priceUSD": 4.2,
+            "popular": false,
+            "features": [
+                "High-speed connection",
+                "24/7 support",
+                "Instant activation",
+                "Windows 10/11",
+                "Priority support",
+                "Extended usage",
+                "Best value"
+            ]
+        }
+    ],
+    "countries": [
+        {
+            "id": 1,
+            "region": "Americas",
+            "name": "Montréal",
+            "location": "northamerica-northeast1",
+            "code": "CA",
+            "flag": "🇨🇦",
+            "available": true,
+            "latency": "Low",
+            "color": "green",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 2,
+            "region": "Americas",
+            "name": "Toronto",
+            "location": "northamerica-northeast2",
+            "code": "CA",
+            "flag": "🇨🇦",
+            "available": true,
+            "latency": "Low",
+            "color": "green",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 3,
+            "region": "Americas",
+            "name": "Mexico",
+            "location": "northamerica-south1",
+            "code": "MX",
+            "flag": "🇲🇽",
+            "available": true,
+            "latency": "Medium",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 4,
+            "region": "Americas",
+            "name": "São Paulo",
+            "location": "southamerica-east1",
+            "code": "BR",
+            "flag": "🇧🇷",
+            "available": true,
+            "latency": "Medium",
+            "color": "yellow",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "6h",
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 5,
+            "region": "Americas",
+            "name": "Santiago",
+            "location": "southamerica-west1",
+            "code": "CL",
+            "flag": "🇨🇱",
+            "available": true,
+            "latency": "Medium",
+            "color": "red",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 6,
+            "region": "Americas",
+            "name": "Iowa",
+            "location": "us-central1",
+            "code": "US",
+            "flag": "🇺🇸",
+            "available": true,
+            "latency": "Low",
+            "color": "blue",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 7,
+            "region": "Americas",
+            "name": "South Carolina",
+            "location": "us-east1",
+            "code": "US",
+            "flag": "🇺🇸",
+            "available": true,
+            "latency": "Low",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 8,
+            "region": "Americas",
+            "name": "Northern Virginia",
+            "location": "us-east4",
+            "code": "US",
+            "flag": "🇺🇸",
+            "available": true,
+            "latency": "Low",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 9,
+            "region": "Americas",
+            "name": "Columbus",
+            "location": "us-east5",
+            "code": "US",
+            "flag": "🇺🇸",
+            "available": true,
+            "latency": "Low",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 10,
+            "region": "Americas",
+            "name": "Dallas",
+            "location": "us-south1",
+            "code": "US",
+            "flag": "��",
+            "available": true,
+            "latency": "Low",
+            "color": "blue",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 11,
+            "region": "Americas",
+            "name": "Oregon",
+            "location": "us-west1",
+            "code": "US",
+            "flag": "🇺🇸",
+            "available": true,
+            "latency": "Low",
+            "color": "blue",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 12,
+            "region": "Americas",
+            "name": "Los Angeles",
+            "location": "us-west2",
+            "code": "US",
+            "flag": "🇺🇸",
+            "available": true,
+            "latency": "Low",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 13,
+            "region": "Americas",
+            "name": "Salt Lake City",
+            "location": "us-west3",
+            "code": "US",
+            "flag": "🇺🇸",
+            "available": true,
+            "latency": "Low",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 14,
+            "region": "Americas",
+            "name": "Las Vegas",
+            "location": "us-west4",
+            "code": "US",
+            "flag": "🇺🇸",
+            "available": true,
+            "latency": "Low",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 15,
+            "region": "Europe",
+            "name": "Warsaw",
+            "location": "europe-central2",
+            "code": "PL",
+            "flag": "🇵🇱",
+            "available": true,
+            "latency": "Medium",
+            "color": "purple",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 16,
+            "region": "Europe",
+            "name": "Finland",
+            "location": "europe-north1",
+            "code": "FI",
+            "flag": "🇫🇮",
+            "available": true,
+            "latency": "Medium",
+            "color": "indigo",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 17,
+            "region": "Europe",
+            "name": "Stockholm",
+            "location": "europe-north2",
+            "code": "SE",
+            "flag": "🇸🇪",
+            "available": true,
+            "latency": "Medium",
+            "color": "blue",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 18,
+            "region": "Europe",
+            "name": "Madrid",
+            "location": "europe-southwest1",
+            "code": "ES",
+            "flag": "🇪🇸",
+            "available": true,
+            "latency": "Medium",
+            "color": "red",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 19,
+            "region": "Europe",
+            "name": "Belgium",
+            "location": "europe-west1",
+            "code": "BE",
+            "flag": "🇧🇪",
+            "available": true,
+            "latency": "Medium",
+            "color": "yellow",
+            "eco": true,
+            "ecoLabel": "🌱 Low CO2",
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 20,
+            "region": "Europe",
+            "name": "Paris",
+            "location": "europe-west9",
+            "code": "FR",
+            "flag": "🇫🇷",
+            "available": true,
+            "latency": "Medium",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 21,
+            "region": "Europe",
+            "name": "Berlin",
+            "location": "europe-west10",
+            "code": "DE",
+            "flag": "🇩🇪",
+            "available": true,
+            "latency": "Medium",
+            "color": "gray",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 22,
+            "region": "Asia Pacific",
+            "name": "Taiwan",
+            "location": "asia-east1",
+            "code": "TW",
+            "flag": "🇹🇼",
+            "available": true,
+            "latency": "Medium",
+            "color": "green",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 23,
+            "region": "Asia Pacific",
+            "name": "Hong Kong",
+            "location": "asia-east2",
+            "code": "HK",
+            "flag": "��",
+            "available": true,
+            "latency": "Medium",
+            "color": "red",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 24,
+            "region": "Asia Pacific",
+            "name": "Tokyo",
+            "location": "asia-northeast1",
+            "code": "JP",
+            "flag": "🇯🇵",
+            "available": true,
+            "latency": "Medium",
+            "color": "red",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 25,
+            "region": "Asia Pacific",
+            "name": "Osaka",
+            "location": "asia-northeast2",
+            "code": "JP",
+            "flag": "🇯🇵",
+            "available": true,
+            "latency": "Medium",
+            "color": "red",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 26,
+            "region": "Asia Pacific",
+            "name": "Seoul",
+            "location": "asia-northeast3",
+            "code": "KR",
+            "flag": "��",
+            "available": true,
+            "latency": "Medium",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 27,
+            "region": "Asia Pacific",
+            "name": "Mumbai",
+            "location": "asia-south1",
+            "code": "IN",
+            "flag": "🇮🇳",
+            "available": true,
+            "latency": "Low",
+            "color": "orange",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 28,
+            "region": "Asia Pacific",
+            "name": "Delhi",
+            "location": "asia-south2",
+            "code": "IN",
+            "flag": "🇮🇳",
+            "available": true,
+            "latency": "Low",
+            "color": "orange",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 29,
+            "region": "Asia Pacific",
+            "name": "Singapore",
+            "location": "asia-southeast1",
+            "code": "SG",
+            "flag": "🇸🇬",
+            "available": true,
+            "latency": "Low",
+            "color": "green",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 30,
+            "region": "Asia Pacific",
+            "name": "Jakarta",
+            "location": "asia-southeast2",
+            "code": "ID",
+            "flag": "🇮🇩",
+            "available": true,
+            "latency": "Low",
+            "color": "red",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 31,
+            "region": "Asia Pacific",
+            "name": "Sydney",
+            "location": "australia-southeast1",
+            "code": "AU",
+            "flag": "🇦🇺",
+            "available": true,
+            "latency": "High",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 32,
+            "region": "Asia Pacific",
+            "name": "Melbourne",
+            "location": "australia-southeast2",
+            "code": "AU",
+            "flag": "🇦🇺",
+            "available": true,
+            "latency": "High",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 33,
+            "region": "Middle East",
+            "name": "Doha",
+            "location": "me-central1",
+            "code": "QA",
+            "flag": "��",
+            "available": true,
+            "latency": "Medium",
+            "color": "purple",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 34,
+            "region": "Middle East",
+            "name": "Dammam",
+            "location": "me-central2",
+            "code": "SA",
+            "flag": "🇸🇦",
+            "available": true,
+            "latency": "Medium",
+            "color": "green",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 35,
+            "region": "Middle East",
+            "name": "Tel Aviv",
+            "location": "me-west1",
+            "code": "IL",
+            "flag": "��",
+            "available": true,
+            "latency": "Medium",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 36,
+            "region": "Africa",
+            "name": "Johannesburg",
+            "location": "africa-south1",
+            "code": "ZA",
+            "flag": "🇿🇦",
+            "available": true,
+            "latency": "High",
+            "color": "yellow",
+            "eco": false,
+            "availableDurations": [
+                "12h",
+                "24h",
+                "48h"
+            ]
+        },
+        {
+            "id": 37,
+            "region": "Asia Pacific",
+            "name": "Thailand",
+            "location": "asia-southeast1",
+            "code": "TH",
+            "flag": "🇹🇭",
+            "available": true,
+            "latency": "Low",
+            "color": "blue",
+            "eco": false,
+            "availableDurations": [
+                "6h",
+                "12h",
+                "24h",
+                "48h"
+            ]
+        }
+    ],
+    "testimonials": [
+        {
+            "id": 1,
+            "name": "Kasun",
+            "location": "Colombo",
+            "message": "Super fast and reliable RDP. Helped me finish my work on time!",
+            "rating": 5,
+            "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
+            "plan": "24 Hours"
+        },
+        {
+            "id": 2,
+            "name": "Nadeesha",
+            "location": "Kandy",
+            "message": "Best price in Sri Lanka. Support team is very helpful!",
+            "rating": 5,
+            "avatar": "https://randomuser.me/api/portraits/women/44.jpg",
+            "plan": "12 Hours"
+        },
+        {
+            "id": 3,
+            "name": "Ruwan",
+            "location": "Galle",
+            "message": "Easy to buy and instant access. Highly recommended!",
+            "rating": 5,
+            "avatar": "https://randomuser.me/api/portraits/men/65.jpg",
+            "plan": "48 Hours"
+        }
+    ],
+    "company": {
+        "name": "LankaRDP",
+        "tagline": "Fast, Secure & Affordable RDP in Sri Lanka",
+        "description": "Premium RDP services with instant activation and 24/7 support",
+        "contact": {
+            "email": "support@lankardp.com",
+            "whatsapp": "+94 740069520"
+        },
+        "features": [
+            "Instant Activation",
+            "24/7 Support",
+            "High Performance",
+            "Secure Connection",
+            "Multiple Countries",
+            "Affordable Pricing"
+        ],
+        "specifications": {
+            "ram": "4GB - 16GB",
+            "cpu": "Intel Xeon",
+            "storage": "50GB - 200GB SSD",
+            "bandwidth": "1Gbps",
+            "os": "Windows 10/11, Windows Server"
+        }
+    },
+    "promotions": {
+        "current": {
+            "title": "Limited Time Offer!",
+            "discount": 20,
+            "validUntil": "2025-09-30",
+            "code": "SAVE20"
+        }
+    }
+}
