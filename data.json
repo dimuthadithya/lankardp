@@ -233,7 +233,7 @@
             "name": "Dallas",
             "location": "us-south1",
             "code": "US",
-            "flag": "��",
+            "flag": "🇺🇸",
             "available": true,
             "latency": "Low",
             "color": "blue",
@@ -432,6 +432,7 @@
             "color": "gray",
             "eco": false,
             "availableDurations": [
+                "6h",
                 "12h",
                 "24h",
                 "48h"
@@ -460,12 +461,13 @@
             "name": "Hong Kong",
             "location": "asia-east2",
             "code": "HK",
-            "flag": "��",
+            "flag": "🇭🇰",
             "available": true,
             "latency": "Medium",
             "color": "red",
             "eco": false,
             "availableDurations": [
+                "6h",
                 "12h",
                 "24h",
                 "48h"
@@ -511,12 +513,13 @@
             "name": "Seoul",
             "location": "asia-northeast3",
             "code": "KR",
-            "flag": "��",
+            "flag": "🇰🇷",
             "available": true,
             "latency": "Medium",
             "color": "blue",
             "eco": false,
             "availableDurations": [
+                "6h",
                 "12h",
                 "24h",
                 "48h"
@@ -568,6 +571,7 @@
             "color": "green",
             "eco": false,
             "availableDurations": [
+                "6h",
                 "12h",
                 "24h",
                 "48h"
@@ -630,7 +634,7 @@
             "name": "Doha",
             "location": "me-central1",
             "code": "QA",
-            "flag": "��",
+            "flag": "🇶🇦",
             "available": true,
             "latency": "Medium",
             "color": "purple",
@@ -664,7 +668,7 @@
             "name": "Tel Aviv",
             "location": "me-west1",
             "code": "IL",
-            "flag": "��",
+            "flag": "🇮🇱",
             "available": true,
             "latency": "Medium",
             "color": "blue",

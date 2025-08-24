@@ -15,9 +15,9 @@ function add6hToCountries(countryNames) {
 
     let updatedCount = 0;
 
-    // Add 6h only to Thailand and São Paulo (Brazil)
+    // Add 6h to specified countries
     data.countries.forEach((country) => {
-      if (country.name === 'Thailand' || country.name === 'São Paulo') {
+      if (countryNames.includes(country.name)) {
         if (!country.availableDurations.includes('6h')) {
           country.availableDurations.unshift('6h'); // Add 6h at the beginning
           country.availableDurations.sort((a, b) => {
@@ -48,9 +48,13 @@ function add6hToCountries(countryNames) {
 
 // Example usage - you can modify this array when you get the 6h list
 const countriesWith6h = [
-  // Only Thailand and Brazil should have 6h availability
+  // Updated list of countries with 6h availability
+  'Singapore',
+  'São Paulo', // Brazil
+  'Seoul',
   'Thailand',
-  'São Paulo'
+  'Berlin', // Frankfurt/Germany
+  'Hong Kong'
 ];
 if (countriesWith6h.length > 0) {
   add6hToCountries(countriesWith6h);
