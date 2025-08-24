@@ -852,34 +852,18 @@ Thank you!`;
 
           planDiv.innerHTML = `
             <div class="space-y-4">
-              <div class="space-y-2">
-                <h3 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">${
+              <div class="mb-8 text-center">
+                <h3 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">${
                   plan.duration
                 }</h3>
-                <div>
-                  <div class="text-4xl font-bold text-gray-900 dark:text-white">
-                    $${plan.priceUSD}
-                  </div>
-                  <div class="text-lg text-gray-500 dark:text-gray-400">
-                    (${plan.currency} ${plan.price})
-                  </div>
+                <div class="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">
+                  $${plan.priceUSD}
                 </div>
-                <p class="text-sm text-gray-500 dark:text-gray-400">One-time payment</p>
+                <div class="text-xl text-gray-500 dark:text-gray-400 mb-3">
+                  (${plan.currency} ${plan.price})
+                </div>
+                <p class="text-gray-500 dark:text-gray-400 text-lg">One-time payment</p>
               </div>
-
-              <div class="space-y-3 pt-6">
-            <div class="mb-8 text-center">
-              <h3 class="text-3xl font-bold text-indigo-600 mb-4">${
-                plan.duration
-              }</h3>
-              <div class="text-5xl font-bold text-indigo-600 mb-2">
-                $${plan.priceUSD}
-              </div>
-              <div class="text-xl text-gray-500 mb-3">
-                (${plan.currency} ${plan.price})
-              </div>
-              <p class="text-gray-500 text-lg">One-time payment</p>
-            </div>
             
             <div class="space-y-3 mb-8">
               ${plan.features
@@ -1069,18 +1053,11 @@ Thank you!`;
               ${Array(testimonial.rating).fill('⭐').join('')}
             </div>
             <p class="text-gray-700 italic">"${testimonial.message}"</p>
-            <div class="mt-4 flex items-center">
-              <img src="${
-                testimonial.avatar
-              }" alt="User" class="w-10 h-10 rounded-full mr-3">
-              <div>
-                <span class="font-semibold text-indigo-700">${
-                  testimonial.name
-                }, ${testimonial.location}</span>
-                <div class="text-sm text-gray-500">Used: ${
-                  testimonial.plan
-                }</div>
-              </div>
+            <div class="mt-4">
+              <div class="font-semibold text-indigo-700">${testimonial.name}, ${
+            testimonial.location
+          }</div>
+              <div class="text-sm text-gray-500">Used: ${testimonial.plan}</div>
             </div>
           `;
 
