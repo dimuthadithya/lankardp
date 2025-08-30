@@ -8,21 +8,21 @@ LankaRDP is a modern website built using **HTML, CSS, JavaScript, and TailwindCS
 
 ## 🛠️ Tech Stack
 
-* **Frontend:** HTML, CSS, JavaScript
-* **Styling:** TailwindCSS
-* **Animations & UI Enhancements:** JavaScript
-* **Hosting:** GitHub Pages
+- **Frontend:** HTML, CSS, JavaScript
+- **Styling:** TailwindCSS
+- **Animations & UI Enhancements:** JavaScript
+- **Hosting:** GitHub Pages
 
 ---
 
 ## ✨ Features
 
-* ⚡ **Instant RDP Setup** – Ready within 5–10 minutes
-* 🛡️ **24/7 Support** – Always here to help
-* 🌍 **Global Server Coverage** – 36+ locations worldwide
-* ⭐ **Trusted by 1000+ Customers**
-* ✅ **99.9% Uptime Guarantee**
-* 💳 **Multiple Payment Methods** – Bank Transfer & Binance Pay
+- ⚡ **Instant RDP Setup** – Ready within 5–10 minutes
+- 🛡️ **24/7 Support** – Always here to help
+- 🌍 **Global Server Coverage** – 36+ locations worldwide
+- ⭐ **Trusted by 1000+ Customers**
+- ✅ **99.9% Uptime Guarantee**
+- 💳 **Multiple Payment Methods** – Bank Transfer & Binance Pay
 
 ---
 
@@ -52,7 +52,7 @@ LankaRDP/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/LankaRDP.git
+git clone https://github.com/dimuthadithya/lankardp.git
 cd LankaRDP
 ```
 
@@ -77,9 +77,9 @@ Simply open `index.html` in your browser or host it on GitHub Pages.
 
 ## 📞 Contact & Support
 
-* 📧 Email: **[support@lankardp.com](mailto:support@lankardp.com)**
-* 📱 WhatsApp: **+94 740069520**
-* 🌐 Website: [LankaRDP](https://lankardp.xyz)
+- 📧 Email: **[support@lankardp.com](mailto:support@lankardp.com)**
+- 📱 WhatsApp: **+94 740069520**
+- 🌐 Website: [LankaRDP](https://lankardp.xyz)
 
 ---
 
